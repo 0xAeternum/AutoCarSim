@@ -110,8 +110,8 @@ namespace AutoCarSim.Models
             //TODO: Build a queue of last used lanes
             Random random = new Random();
             int randlane = random.Next(0, HEIGHT);
-            if (randlane > HEIGHT - 2)
-            {
+            //if (randlane > HEIGHT - 2)
+            //{
                 int rand = random.Next(0, 10);
                 if(rand < 5)
                 {
@@ -133,7 +133,7 @@ namespace AutoCarSim.Models
                     map.addNewVehicle(randlane, LENGTH);
                     Debug.WriteLine("Car added! Lane: " + randlane);
                 }
-            }
+            /*}
             else if (randlane > HEIGHT / 2)
             {
                 int rand = random.Next(10);
@@ -158,7 +158,7 @@ namespace AutoCarSim.Models
                 map.vehicles.Add(new Car());
                 map.addNewVehicle(randlane, LENGTH);
                 Debug.WriteLine("Car added! Lane: " + randlane);
-            }
+            }*/
 
         }
 

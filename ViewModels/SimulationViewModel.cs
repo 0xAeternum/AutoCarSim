@@ -13,7 +13,7 @@ namespace AutoCarSim.ViewModels
         public SimulationViewModel()
         {
             map = new Map();
-            milisecondsPerSpawn = 1000000;
+            milisecondsPerSpawn = 1000;
             amountOfThreads = 1;
             amountOfCars = 1;
 
