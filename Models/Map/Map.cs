@@ -123,10 +123,10 @@ namespace AutoCarSim.Models
                 }
             }
             //TODO: Remove - for testing
-            for (int i = 0; i < tiles.Count(); i += 40)
+            for (int i = 0; i < tiles.Count(); i += 20)
             {
                 String text = "";
-                for (int j = 0; j < 40; j++)
+                for (int j = 0; j < 20; j++)
                 {
                     if (tiles[i + j].color == "Black")
                     {
