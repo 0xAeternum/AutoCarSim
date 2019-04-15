@@ -29,6 +29,13 @@ namespace AutoCarSim.Views
 
         public void simulateButton_Click( object sender, RoutedEventArgs e)
         {
+            /*
+             * Trying to pass parameters
+            int numThreads = Int32.Parse(numberOfSpawnsTxt.Text);
+            int numSpawns = Int32.Parse(numberOfThreadsTxt.Text);
+            Parameters param = new Parameters(numThreads, numSpawns);
+            */
+            
             Frame.Navigate(typeof(SimulatorView));
         }
     }
