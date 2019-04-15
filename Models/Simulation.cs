@@ -19,7 +19,7 @@ namespace AutoCarSim.Models
         private int _amountOfCars;
         //HEIGHT - at least 7!
         private int HEIGHT = 7;
-        private int LENGTH = 40;
+        private int LENGTH = 20;
         private int MAIN_STEP_TIME = 1000;
         private int _steps = 0;
         private bool _running = false;
@@ -74,7 +74,7 @@ namespace AutoCarSim.Models
             //Main game loop Thread
             ThreadPool.QueueUserWorkItem(mainLoop);
             //Vehicle adding loop Thread
-            //ThreadPool.QueueUserWorkItem(vehicleLoop);
+            ThreadPool.QueueUserWorkItem(vehicleLoop);
         }
 
         private void mainLoop(Object stateInfo)
