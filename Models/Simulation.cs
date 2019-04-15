@@ -72,9 +72,13 @@ namespace AutoCarSim.Models
             map.populateMap(HEIGHT, LENGTH, amountOfCars, amountOfThreads);
             running = true;
             //Main game loop Thread
-            ThreadPool.QueueUserWorkItem(mainLoop);
+            Task avehicleLoopTask = new Task(mainLoop, "AVehicle Loop");
+            avehicleLoopTask.Start();
+            //ThreadPool.QueueUserWorkItem(mainLoop);
             //Vehicle adding loop Thread
-            ThreadPool.QueueUserWorkItem(vehicleLoop);
+            //ThreadPool.QueueUserWorkItem(vehicleLoop);
+            Task vehicleLoopTask = new Task(vehicleLoop, "Vehicle Loop");
+            vehicleLoopTask.Start();
         }
 
         private void mainLoop(Object stateInfo)
@@ -105,10 +109,10 @@ namespace AutoCarSim.Models
         {
             //TODO: Build a queue of last used lanes
             Random random = new Random();
-            int randlane = random.Next(HEIGHT);
+            int randlane = random.Next(0, HEIGHT);
             if (randlane > HEIGHT - 2)
             {
-                int rand = random.Next(10);
+                int rand = random.Next(0, 10);
                 if(rand < 5)
                 {
                     //Add truck

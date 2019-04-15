@@ -115,6 +115,7 @@ namespace AutoCarSim.Models
 
         private void makeSensors(int amountOfThreads, List<Tile> tiles)
         {
+       
             switch (amountOfThreads)
             {
                 case 1:
@@ -125,7 +126,7 @@ namespace AutoCarSim.Models
                     sensors.Add(new RightSensor(tiles));
                     sensors.Add(new BackSensor(tiles));
                     break;
-                case 3:
+                case 2:
                     //TODO: Make threads
                     break;
                 case 6:

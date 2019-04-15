@@ -191,7 +191,7 @@ namespace AutoCarSim.Models
         {
             Vehicle newVehicle = vehicles.Last();
             List<Tile> vahicleTiles = new List<Tile>();
-            for (int i = newVehicle.length; i >= 0; i--)
+            for (int i = newVehicle.length; i > 0; i--)
             {
                 foreach (Tile tile in tiles)
                 {
@@ -202,7 +202,7 @@ namespace AutoCarSim.Models
                 }
             }
             newVehicle.saveTiles(vahicleTiles);
-            foreach (Tile tile in tiles)
+            foreach (Tile tile in vahicleTiles)
             {
                 tile.color = newVehicle.color;
                 tile.isTaken = true;
