@@ -59,6 +59,7 @@ namespace AutoCarSim.Models
 
         public void makeStep()
         {
+            bool reachedEnd = false;
             //TODO: Remove - for testing
             for (int i = 0; i < tiles.Count(); i += 20)
             {
@@ -113,12 +114,21 @@ namespace AutoCarSim.Models
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
+                    if (vehicle.tiles[0].y == 0)
+                    {
+                        vehicle.tiles = null;
+                        vehicles.Remove(vehicle);
+                        reachedEnd = true;
+                        break;
+                    }
                     if (tile.x == vehicle.tiles[0].x)
                     {
                         Tile newTile = tile;
                         endTiles.Add(newTile);
                     }
                 }
+
+                if (reachedEnd) break;
                 Debug.WriteLine("TEST 1: " + endTiles.Count());
                 foreach (Tile vehicleTile in vehicle.tiles)
                 {
