@@ -74,7 +74,7 @@ namespace AutoCarSim.Models
             //Main game loop Thread
             ThreadPool.QueueUserWorkItem(mainLoop);
             //Vehicle adding loop Thread
-            ThreadPool.QueueUserWorkItem(vehicleLoop);
+            //ThreadPool.QueueUserWorkItem(vehicleLoop);
         }
 
         private void mainLoop(Object stateInfo)
@@ -84,6 +84,7 @@ namespace AutoCarSim.Models
             {
                 map.makeStep();
                 crash = map.checkCrash();
+                //addVehicle();
                 Thread.Sleep(MAIN_STEP_TIME);
                 steps += 1;
                 Debug.WriteLine("Amount of steps: " + steps);

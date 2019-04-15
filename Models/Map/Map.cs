@@ -59,8 +59,29 @@ namespace AutoCarSim.Models
 
         public void makeStep()
         {
+            //TODO: Remove - for testing
+            for (int i = 0; i < tiles.Count(); i += 20)
+            {
+                String text = "";
+                for (int j = 0; j < 20; j++)
+                {
+                    if (tiles[i + j].color == "Black")
+                    {
+                        text += "-";
+                    }
+                    else if (tiles[i + j].color == "Red")
+                    {
+                        text += "x";
+                    }
+                    else
+                    {
+                        text += "o";
+                    }
+                }
+                Debug.WriteLine(text);
+            }
             //move avehicles
-            foreach(Vehicle avehicle in avehicles)
+            foreach (Vehicle avehicle in avehicles)
             {
                 foreach (Tile vehicleTile in avehicle.tiles)
                 {
@@ -98,50 +119,33 @@ namespace AutoCarSim.Models
                         endTiles.Add(newTile);
                     }
                 }
+                Debug.WriteLine("TEST 1: " + endTiles.Count());
                 foreach (Tile vehicleTile in vehicle.tiles)
                 {
                     foreach (Tile tile in tiles)
                     {
                         if (vehicleTile.x == tile.x && vehicleTile.y == tile.y)
                         {
+                            Debug.WriteLine("TEST 2: " + tile.x + " " + tile.y);
                             tile.color = "Black";
                             tile.isTaken = false;
                         }
                     }
                 }
                 vehicle.move(endTiles);
+                Debug.WriteLine("TEST 3: " + vehicle.tiles.Count());
                 foreach (Tile vehicleTile in vehicle.tiles)
                 {
                     foreach(Tile tile in tiles)
                     {
                         if(vehicleTile.x == tile.x && vehicleTile.y == tile.y)
                         {
+                            Debug.WriteLine("TEST 4: " + tile.x + " " + tile.y);
                             tile.color = vehicle.color;
                             tile.isTaken = true;
                         }
                     }
                 }
-            }
-            //TODO: Remove - for testing
-            for (int i = 0; i < tiles.Count(); i += 20)
-            {
-                String text = "";
-                for (int j = 0; j < 20; j++)
-                {
-                    if (tiles[i + j].color == "Black")
-                    {
-                        text += "-";
-                    }
-                    else if (tiles[i + j].color == "Red")
-                    {
-                        text += "x";
-                    }
-                    else
-                    {
-                        text += "o";
-                    }
-                }
-                Debug.WriteLine(text);
             }
         }
 
@@ -191,7 +195,7 @@ namespace AutoCarSim.Models
         {
             Vehicle newVehicle = vehicles.Last();
             List<Tile> vahicleTiles = new List<Tile>();
-            for (int i = newVehicle.length; i >= 0; i--)
+            for (int i = newVehicle.length; i > 0; i--)
             {
                 foreach (Tile tile in tiles)
                 {
