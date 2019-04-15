@@ -108,7 +108,7 @@ namespace AutoCarSim.Models
                 }
             }
             //move vehicles
-            foreach (Vehicle vehicle in vehicles)
+            foreach (Vehicle vehicle in vehicles.ToList())
             {
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
