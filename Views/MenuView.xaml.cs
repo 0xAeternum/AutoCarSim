@@ -31,11 +31,18 @@ namespace AutoCarSim.Views
         {
             /*
              * Trying to pass parameters
+             * and failing :D
             int numThreads = Int32.Parse(numberOfSpawnsTxt.Text);
             int numSpawns = Int32.Parse(numberOfThreadsTxt.Text);
             Parameters param = new Parameters(numThreads, numSpawns);
             */
-            
+
+            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
+            System.Diagnostics.Debug.WriteLine(localSettings.Values["threads"]);
+            localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
+
             Frame.Navigate(typeof(SimulatorView));
         }
     }
