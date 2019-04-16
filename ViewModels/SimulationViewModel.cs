@@ -13,11 +13,21 @@ namespace AutoCarSim.ViewModels
         public SimulationViewModel()
         {
             map = new Map();
-            milisecondsPerSpawn = 1000;
-            amountOfThreads = 1;
+            milisecondsPerSpawn = getSpawns();
+            amountOfThreads = getThreads();
             amountOfCars = 1;
 
             start();
+        }
+
+        private int getThreads()
+        {
+            return (int)Windows.Storage.ApplicationData.Current.LocalSettings.Values["threads"];
+        }
+
+        private int getSpawns()
+        {
+            return (int)Windows.Storage.ApplicationData.Current.LocalSettings.Values["spawns"];
         }
 
         public SimulationViewModel(int milisecondsPerSpawn, int threads, int amountOfCars)
