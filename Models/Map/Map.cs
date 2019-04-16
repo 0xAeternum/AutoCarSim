@@ -163,6 +163,24 @@ namespace AutoCarSim.Models
         {
             bool crash = false;
             //check for crash
+
+            foreach(Vehicle aVehicle in avehicles)
+            {
+                foreach (Vehicle vehicle in vehicles)
+                {
+                    foreach(Tile avTile in aVehicle.tiles)
+                    {
+                        foreach(Tile vTile in vehicle.tiles)
+                        {
+                            if (avTile.x == vTile.x && avTile.y == vTile.y)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
             if(crash == true)
             {
                 return true;

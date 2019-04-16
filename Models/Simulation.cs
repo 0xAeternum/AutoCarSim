@@ -93,7 +93,7 @@ namespace AutoCarSim.Models
                 Debug.WriteLine("Amount of steps: " + steps);
             }
             running = false;
-            stop();
+            stopAsync();
         }
 
         private void vehicleLoop(Object stateInfo)
@@ -162,9 +162,13 @@ namespace AutoCarSim.Models
 
         }
 
-        public void stop()
+        public async void stopAsync()
         {
-            //show crash or sth
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            async () =>
+            {
+                await new Windows.UI.Popups.MessageDialog("CRASH!!!").ShowAsync();
+            });
         }
     }
 }

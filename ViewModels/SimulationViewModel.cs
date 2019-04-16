@@ -32,7 +32,7 @@ namespace AutoCarSim.ViewModels
 
         public void stopSimulation()
         {
-            stop();
+            stopAsync();
         }
     }
 }
