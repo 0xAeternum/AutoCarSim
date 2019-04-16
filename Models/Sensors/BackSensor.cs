@@ -23,6 +23,7 @@ namespace AutoCarSim.Models.Sensors
                 if (tile.x == x && tile.y == y - 2) if (tile.isTaken) turn = false;
             }
             Thread.Sleep(this.getSlowDown());
+
             return turn;
         }
     }

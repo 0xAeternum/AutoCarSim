@@ -71,12 +71,10 @@ namespace AutoCarSim.Models
             if (HEIGHT < 7) HEIGHT = 7;
             map.populateMap(HEIGHT, LENGTH, amountOfCars, amountOfThreads);
             running = true;
-            //Main game loop Thread
+
             Task avehicleLoopTask = new Task(mainLoop, "AVehicle Loop");
             avehicleLoopTask.Start();
-            //ThreadPool.QueueUserWorkItem(mainLoop);
-            //Vehicle adding loop Thread
-            //ThreadPool.QueueUserWorkItem(vehicleLoop);
+
             Task vehicleLoopTask = new Task(vehicleLoop, "Vehicle Loop");
             vehicleLoopTask.Start();
         }
