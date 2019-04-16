@@ -113,14 +113,14 @@ namespace AutoCarSim.Models
             //if (randlane > HEIGHT - 2)
             //{
                 int rand = random.Next(0, 10);
-                if(rand < 5)
+                if(rand < 2)
                 {
                     //Add truck
                     map.vehicles.Add(new Truck());
                     map.addNewVehicle(randlane, LENGTH);
                     Debug.WriteLine("Truck added! Lane: " + randlane);
                 }
-                else if (rand < 7.5) {
+                else if (rand < 5) {
                     //Add bus
                     map.vehicles.Add(new Bus());
                     map.addNewVehicle(randlane, LENGTH);
