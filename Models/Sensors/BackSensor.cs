@@ -14,7 +14,7 @@ namespace AutoCarSim.Models.Sensors
             this.tiles = tiles;
         }
 
-        public override bool check(int x, int y, Thread t)
+        public override bool check(int x, int y)
         {
             bool turn = true;
             foreach (Tile tile in tiles)
