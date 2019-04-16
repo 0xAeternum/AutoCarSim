@@ -27,8 +27,7 @@
         <Grid Grid.Row="1" Grid.Column="1">
             <ComboBox x:Name="numberOfThreadsTxt" Header="Threads" Margin="0,24,0,0" Width="400" HorizontalAlignment="Left">
                 <x:Int32>1</x:Int32>
-                <x:Int32>3</x:Int32>
-                <x:Int32>6</x:Int32>
+                <x:Int32>4</x:Int32>
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
