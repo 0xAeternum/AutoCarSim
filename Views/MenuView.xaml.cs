@@ -38,7 +38,7 @@ namespace AutoCarSim.Views
             */
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
+            //TODO: check if values are assigned, otherwise default values
             localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
             System.Diagnostics.Debug.WriteLine(localSettings.Values["threads"]);
             localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
