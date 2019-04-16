@@ -31,7 +31,6 @@ namespace AutoCarSim.Views
         {
             /*
              * Trying to pass parameters
-             * and failing :D
             int numThreads = Int32.Parse(numberOfSpawnsTxt.Text);
             int numSpawns = Int32.Parse(numberOfThreadsTxt.Text);
             Parameters param = new Parameters(numThreads, numSpawns);
@@ -39,9 +38,8 @@ namespace AutoCarSim.Views
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             //TODO: check if values are assigned, otherwise default values
-            localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
-            System.Diagnostics.Debug.WriteLine(localSettings.Values["threads"]);
-            localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
+            if (numberOfThreadsTxt.SelectedValue == null) localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
+            if (numberOfSpawnsTxt.Text == null)localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
 
             Frame.Navigate(typeof(SimulatorView));
         }

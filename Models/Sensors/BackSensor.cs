@@ -14,7 +14,7 @@ namespace AutoCarSim.Models.Sensors
             this.tiles = tiles;
         }
 
-        public override bool check(int x, int y)
+        public override bool check(int x, int y, Thread t)
         {
             bool turn = true;
             foreach (Tile tile in tiles)
@@ -23,6 +23,7 @@ namespace AutoCarSim.Models.Sensors
                 if (tile.x == x && tile.y == y - 2) if (tile.isTaken) turn = false;
             }
             Thread.Sleep(this.getSlowDown());
+
             return turn;
         }
     }

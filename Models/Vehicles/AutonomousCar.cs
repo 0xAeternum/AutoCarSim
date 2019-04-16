@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutoCarSim.Models
@@ -30,7 +31,18 @@ namespace AutoCarSim.Models
 
         public override void move(List<Tile> tiles)
         {
-            if (sensors[0].check(this.tiles[0].x, this.tiles[0].y))
+            bool accelerate = false;
+            bool turnLeft = false;
+            bool turnRight = false;
+            bool slowDown = false;
+            bool cruize = false;
+
+            new Thread(new ThreadStart(() =>
+            {
+                accelerate = sensors[0].check(this.tiles[0].x, this.tiles[0].y);
+            }));
+
+            if (accelerate)
             {
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
