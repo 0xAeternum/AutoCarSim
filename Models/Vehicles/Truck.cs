@@ -16,6 +16,11 @@ namespace AutoCarSim.Models.Vehicles
             this.length = 4;
         }
 
+        public override Task moveAsync(List<Tile> tiles)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void move(List<Tile> tiles)
         {
             int position = 0;

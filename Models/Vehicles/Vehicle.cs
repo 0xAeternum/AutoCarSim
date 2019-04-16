@@ -54,5 +54,6 @@ namespace AutoCarSim.Models
         }
 
         public abstract void move(List<Tile> tiles);
+        public abstract Task moveAsync(List<Tile> tiles);
     }
 }

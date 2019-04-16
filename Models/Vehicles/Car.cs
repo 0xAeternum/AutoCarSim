@@ -17,11 +17,16 @@ namespace AutoCarSim.Models
             this.length = 2;
         }
 
+        public override Task moveAsync(List<Tile> tiles)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void move(List<Tile> tiles)
         {
             if (tiles.Count() == 2)
             {
-                this.saveTiles(tiles);
+                if(tiles[0].y >= 0 && tiles[0].x >= 0 && tiles[0].x < 7 && tiles[1].y < 20) this.saveTiles(tiles);
             }
             else
             {

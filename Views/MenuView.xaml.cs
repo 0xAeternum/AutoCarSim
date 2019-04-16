@@ -38,8 +38,8 @@ namespace AutoCarSim.Views
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             //TODO: check if values are assigned, otherwise default values
-            if (numberOfThreadsTxt.SelectedValue == null) localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
-            if (numberOfSpawnsTxt.Text == null)localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
+            if (numberOfThreadsTxt.SelectedValue != null) localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
+            if (numberOfSpawnsTxt.Text != null)localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
 
             Frame.Navigate(typeof(SimulatorView));
         }

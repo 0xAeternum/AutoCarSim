@@ -57,7 +57,7 @@ namespace AutoCarSim.Models
             this.addVehicles(height);
         }
 
-        public void makeStep()
+        public async Task makeStepAsync()
         {
             bool reachedEnd = false;
             //TODO: Remove - for testing
@@ -95,7 +95,7 @@ namespace AutoCarSim.Models
                         }
                     }
                 }
-                avehicle.move(tiles);
+                await avehicle.moveAsync(tiles);
                 foreach (Tile vehicleTile in avehicle.tiles)
                 {
                     foreach (Tile tile in tiles)

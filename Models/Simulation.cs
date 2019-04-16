@@ -84,7 +84,7 @@ namespace AutoCarSim.Models
             bool crash = false;
             while (!crash)
             {
-                map.makeStep();
+                map.makeStepAsync();
                 crash = map.checkCrash();
                 Thread.Sleep(MAIN_STEP_TIME);
                 steps += 1;

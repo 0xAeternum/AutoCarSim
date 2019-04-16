@@ -12,7 +12,7 @@ namespace AutoCarSim.Models
     public abstract class Sensor : BaseModel
     {
         private List<Tile> _tiles;
-        private int slowDown = 500;
+        private int slowDown = 250;
 
         public List<Tile> tiles
         {

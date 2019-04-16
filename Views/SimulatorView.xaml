@@ -41,7 +41,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Row="1" Grid.Column="1" Background="{x:Bind color, Mode=OneWay}" Content="{x:Bind color, Mode=OneWay}" />
+                    <Button Grid.Row="1" Grid.Column="1" Background="{x:Bind color, Mode=OneWay}" Content="x" />
                 </Grid>
             </DataTemplate>
         </GridView.ItemTemplate>
