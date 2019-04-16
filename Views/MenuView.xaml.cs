@@ -29,17 +29,12 @@ namespace AutoCarSim.Views
 
         public void simulateButton_Click( object sender, RoutedEventArgs e)
         {
-            /*
-             * Trying to pass parameters
-            int numThreads = Int32.Parse(numberOfSpawnsTxt.Text);
-            int numSpawns = Int32.Parse(numberOfThreadsTxt.Text);
-            Parameters param = new Parameters(numThreads, numSpawns);
-            */
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            //TODO: check if values are assigned, otherwise default values
-            if (numberOfThreadsTxt.SelectedValue != null) localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue;
-            if (numberOfSpawnsTxt.Text != null)localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);
+
+            //store input values
+            if (numberOfThreadsTxt.SelectedValue != null) localSettings.Values["threads"] = (int)numberOfThreadsTxt.SelectedValue; //store threads amount to local settings
+            if (numberOfSpawnsTxt.Text != null)localSettings.Values["spawns"] = Int32.Parse(numberOfSpawnsTxt.Text);               //store spawn time interval to local settings
 
             Frame.Navigate(typeof(SimulatorView));
         }

@@ -14,6 +14,7 @@ namespace AutoCarSim.Models.Sensors
             this.tiles = tiles;
         }
 
+        //check the front right side of the autonomous car for possible movement
         public override bool check(int x, int y)
         {
             bool turn = true;

@@ -20,11 +20,13 @@ namespace AutoCarSim.ViewModels
             start();
         }
 
+        //get amount of threads from local settings
         private int getThreads()
         {
             return (int)Windows.Storage.ApplicationData.Current.LocalSettings.Values["threads"];
         }
 
+        //get spawn time for enemy cars from local settings
         private int getSpawns()
         {
             return (int)Windows.Storage.ApplicationData.Current.LocalSettings.Values["spawns"];

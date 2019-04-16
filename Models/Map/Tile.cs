@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace AutoCarSim.Models
 {
+    /**
+     * Tiles can contain multiple types of cars
+     * Empty tiles/highway tiles have the color black
+     */
     public class Tile : BaseModel
     {
         private int _x;

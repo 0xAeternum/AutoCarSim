@@ -12,6 +12,7 @@ namespace AutoCarSim.Models
     public abstract class Sensor : BaseModel
     {
         private List<Tile> _tiles;
+        //amount im milliseconds that the sensors will pause
         private int slowDown = 250;
 
         public List<Tile> tiles

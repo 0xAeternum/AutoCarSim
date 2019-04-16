@@ -15,12 +15,12 @@ namespace AutoCarSim.Models
     {
         private Map _map;
         private int _milisecondsPerSpawn;
-        private int _amountOfThreads;
+        private int _amountOfThreads; //store amount of threads to be used
         private int _amountOfCars;
         //HEIGHT - at least 7!
-        private int HEIGHT = 7;
-        private int LENGTH = 20;
-        private int MAIN_STEP_TIME = 1000;
+        private int HEIGHT = 7; // max x
+        private int LENGTH = 20;// max y
+        private int MAIN_STEP_TIME = 1000; //time it takes for the map to refresh
         private int _steps = 0;
         private bool _running = false;
 
@@ -72,9 +72,11 @@ namespace AutoCarSim.Models
             map.populateMap(HEIGHT, LENGTH, amountOfCars, amountOfThreads);
             running = true;
 
+            //start main loop of the map
             Task avehicleLoopTask = new Task(mainLoop, "AVehicle Loop");
             avehicleLoopTask.Start();
 
+            //start secondary loop of adding enemy vehicles continuously
             Task vehicleLoopTask = new Task(vehicleLoop, "Vehicle Loop");
             vehicleLoopTask.Start();
         }
@@ -105,50 +107,22 @@ namespace AutoCarSim.Models
 
         public void addVehicle()
         {
-            //TODO: Build a queue of last used lanes
             Random random = new Random();
             int randlane = random.Next(0, HEIGHT);
-            //if (randlane > HEIGHT - 2)
-            //{
-                int rand = random.Next(0, 10);
-                if(rand < 2)
-                {
-                    //Add truck
-                    map.vehicles.Add(new Truck());
-                    map.addNewVehicle(randlane, LENGTH);
-                    Debug.WriteLine("Truck added! Lane: " + randlane);
-                }
-                else if (rand < 5) {
-                    //Add bus
-                    map.vehicles.Add(new Bus());
-                    map.addNewVehicle(randlane, LENGTH);
-                    Debug.WriteLine("Bus added! Lane: " + randlane);
-                }
-                else
-                {
-                    //Add car
-                    map.vehicles.Add(new Car());
-                    map.addNewVehicle(randlane, LENGTH);
-                    Debug.WriteLine("Car added! Lane: " + randlane);
-                }
-            /*}
-            else if (randlane > HEIGHT / 2)
+
+            int rand = random.Next(0, 10);
+            if(rand < 2)
             {
-                int rand = random.Next(10);
-                if (rand < 5)
-                {
-                    //Add bus
-                    map.vehicles.Add(new Bus());
-                    map.addNewVehicle(randlane, LENGTH);
-                    Debug.WriteLine("Bus added! Lane: " + randlane);
-                }
-                else
-                {
-                    //Add car
-                    map.vehicles.Add(new Car());
-                    map.addNewVehicle(randlane, LENGTH);
-                    Debug.WriteLine("Car added! Lane: " + randlane);
-                }
+                //Add truck
+                map.vehicles.Add(new Truck());
+                map.addNewVehicle(randlane, LENGTH);
+                Debug.WriteLine("Truck added! Lane: " + randlane);
+            }
+            else if (rand < 5) {
+                //Add bus
+                map.vehicles.Add(new Bus());
+                map.addNewVehicle(randlane, LENGTH);
+                Debug.WriteLine("Bus added! Lane: " + randlane);
             }
             else
             {
@@ -156,10 +130,11 @@ namespace AutoCarSim.Models
                 map.vehicles.Add(new Car());
                 map.addNewVehicle(randlane, LENGTH);
                 Debug.WriteLine("Car added! Lane: " + randlane);
-            }*/
-
+            }
+           
         }
 
+        //show car crash message dialog
         public async void stopAsync()
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,

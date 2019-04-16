@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 
 namespace AutoCarSim.Models
 {
+    /**
+     * Autonomous car moves on its own depending on result from sensors
+     * it has a length of 2 tiles
+     * the red colored tiles contain the autonomous car
+     */
     public class AutonomousCar : Car
     {
         private List<Sensor> _sensors = new List<Sensor>();
@@ -48,34 +53,34 @@ namespace AutoCarSim.Models
                         case 0:
                             sensor1 = new Task(() =>
                             {
+                                //check if vehicle should accelerate
                                 accelerate = sensors[0].check(this.tiles[0].x, this.tiles[0].y);
                             });
                             sensor1.Start();
-                            //Task.WaitAll(sensor1);
                             break;
                         case 1:
                             sensor2 = new Task(() =>
                             {
+                                //check if turning left is possible
                                 turnLeft = sensors[1].check(this.tiles[0].x, this.tiles[0].y) && sensors[2].check(this.tiles[0].x, this.tiles[0].y);
                             });
                             sensor2.Start();
-                            //Task.WaitAll(sensor2);
                             break;
                         case 2:
                             sensor3 = new Task(() =>
                             {
+                                //check if turning right is possible
                                 turnRight = sensors[3].check(this.tiles[0].x, this.tiles[0].y) && sensors[4].check(this.tiles[0].x, this.tiles[0].y);
                             });
                             sensor3.Start();
-                            //Task.WaitAll(sensor3);
                             break;
                         case 3:
                             sensor4 = new Task(() =>
                             {
+                                //check if vehicle should slow down
                                 slowDown = sensors[5].check(this.tiles[0].x, this.tiles[0].y);
                             });
                             sensor4.Start();
-                            //Task.WaitAll(sensor4);
                             break;
                         default:
                             break;
@@ -84,11 +89,9 @@ namespace AutoCarSim.Models
                 await Task.WhenAll(sensor1, sensor2, sensor3, sensor4);
             }
 
-            Debug.WriteLine(accelerate);
-
-
             if (accelerate || sensors[0].check(this.tiles[0].x, this.tiles[0].y))
             {
+                //adjust tiles and tile colours depending on next movement
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
@@ -106,6 +109,7 @@ namespace AutoCarSim.Models
             }
             else if (turnLeft || sensors[1].check(this.tiles[0].x, this.tiles[0].y) && sensors[2].check(this.tiles[0].x, this.tiles[0].y))
             {
+                //adjust tiles and tile colours depending on next movement
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
@@ -123,6 +127,7 @@ namespace AutoCarSim.Models
             }
             else if (turnRight || sensors[3].check(this.tiles[0].x, this.tiles[0].y) && sensors[4].check(this.tiles[0].x, this.tiles[0].y))
             {
+                //adjust tiles and tile colours depending on next movement
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
@@ -140,6 +145,7 @@ namespace AutoCarSim.Models
             }
             else if (slowDown || sensors[5].check(this.tiles[0].x, this.tiles[0].y))
             {
+                //adjust tiles and tile colours depending on next movement
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
@@ -157,6 +163,7 @@ namespace AutoCarSim.Models
             }
             else
             {
+                //autonomous vehicle did not move, adjust tiles depending on enemy vehicle movement
                 List<Tile> endTiles = new List<Tile>();
                 foreach (Tile tile in tiles)
                 {
@@ -178,8 +185,6 @@ namespace AutoCarSim.Models
             sensors.Add(new FrontRightSensor(tiles));
             sensors.Add(new RightSensor(tiles));
             sensors.Add(new BackSensor(tiles));
-
-           
         }
     }
 }

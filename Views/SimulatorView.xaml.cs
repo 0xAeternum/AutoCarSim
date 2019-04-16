@@ -30,22 +30,8 @@ namespace AutoCarSim.Views
         {
 
             this.SVM = new SimulationViewModel();
-            //this.DataContext = new SimulationViewModel();
             this.InitializeComponent();
         }
-        /*
-         * Trying to pass parameters
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            Parameters parameters = e.Parameter as Parameters;
-            //int threads = parameters.threads;
-            //int spawns = parameters.spawns * 1000;
-            
-            this.SVM = new SimulationViewModel(parameters.spawns, parameters.threads * 1000, 1);
-            this.InitializeComponent();
-
-        }
-        */
+       
     }
 }

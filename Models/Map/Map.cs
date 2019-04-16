@@ -161,9 +161,8 @@ namespace AutoCarSim.Models
 
         public bool checkCrash()
         {
-            bool crash = false;
-            //check for crash
-
+            //check for crash by looping through the autonomous vehicle and enemy vehicle's
+            //tiles and check overlapping of x and y positions
             foreach(Vehicle aVehicle in avehicles)
             {
                 foreach (Vehicle vehicle in vehicles)
@@ -181,10 +180,6 @@ namespace AutoCarSim.Models
                 }
             }
 
-            if(crash == true)
-            {
-                return true;
-            }
             return false;
         }
 
@@ -219,6 +214,7 @@ namespace AutoCarSim.Models
             }
         }
 
+        //add new enemy vehicle ont he map
         public void addNewVehicle(int lane, int length)
         {
             Vehicle newVehicle = vehicles.Last();
